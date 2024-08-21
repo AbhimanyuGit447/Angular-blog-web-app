@@ -3,16 +3,22 @@
     <div class="text-center mt-3 mb-5">
       <h3>SUBSCRIPTION FORM</h3>
       <p class="m-auto subs-text">lorema adjasjdasdj sadlkjadskljqwe weqkljqwekjwq ekasdjslskda</p>
-      <form action="" class="form-inline mb-5 mt-5">
+
+
+      <div class="alert aler-info mt-3" style="background-color: rgb(19, 255, 106);"  *ngIf="isSubscribed" >
+        Thank you for subscribing to the newsletter service, Stay tuned !!
+      </div>
+
+      <form *ngIf="!isSubscribed" (ngSubmit)="onSubmit(subForm.value)"  #subForm = ngForm class="form-inline mb-5 mt-5">
         <div class="form-group col-md-5">
-          <input type="text" class="form-control shadow-effect" placeholder="Your Name">
+          <input required type="text" class="form-control shadow-effect" placeholder="Your Name" name="name" ngModel >
         </div>
         <div class="form-group col-md-5">
-          <input type="email" class="form-control shadow-effect" placeholder="Email Address">
+          <input required name="email" ngModel type="email" class="form-control shadow-effect" placeholder="Email Address">
         </div>
 
         <div class="col-md-2">
-          <button class="btn btn-info btn-block btn-sub">SUBSCRIBE</button>
+          <button [disabled]="subForm.invalid" class="btn btn-info btn-block btn-theme">SUBSCRIBE</button>
         </div>
 
       </form>
